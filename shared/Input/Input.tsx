@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { TextInput, TextInputProps, StyleSheet, View } from "react-native";
 import { Colors, Fonts, Radius } from "../tokens";
 import SearchIcon from "../../assets/icons/search_icon";
