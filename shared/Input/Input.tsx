@@ -1,36 +1,36 @@
-import { TextInput, TextInputProps, StyleSheet, View } from "react-native";
-import { Colors, Fonts, Radius } from "../tokens";
-import SearchIcon from "../../assets/icons/search_icon";
+import { TextInput, TextInputProps, StyleSheet, View } from 'react-native';
+import { Colors, Fonts, Radius } from '../tokens';
+import SearchIcon from '../../assets/icons/search_icon';
 
-export function Input({isSearch, ...props}: TextInputProps & { isSearch?: boolean }) {
+export function Input({
+  isSearch,
+  ...props
+}: TextInputProps & { isSearch?: boolean }) {
   return (
     <View>
-      <TextInput 
-        style={[
-          styles.input,
-          {paddingLeft: isSearch ? 48 : 16,}
-        ]} 
+      <TextInput
+        style={[styles.input, { paddingLeft: isSearch ? 48 : 16 } as const]}
         placeholderTextColor={Colors.textGray}
-        {...props} 
+        {...props}
       />
-      {isSearch && <SearchIcon style={styles.searchIcon}/>}
+      {isSearch && <SearchIcon style={styles.searchIcon} />}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   input: {
-    width: "100%",
+    width: '100%',
     height: 52,
     padding: 16,
     fontSize: Fonts.f14,
     backgroundColor: Colors.inputBackground,
     borderRadius: Radius.r16,
-    color: Colors.white
+    color: Colors.white,
   },
   searchIcon: {
-    position: "absolute",
+    position: 'absolute',
     left: 16,
-    top: 16
-  }
-})
+    top: 16,
+  },
+});

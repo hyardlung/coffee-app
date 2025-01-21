@@ -8,17 +8,17 @@ export const Colors = {
   textBlack: '#2F2D2C',
   textGray: '#9B9B9B',
   inputBackground: '#313131',
-}
+};
 
 export const Gaps = {
   g16: 16,
   g50: 50,
-}
+};
 
 export const Radius = {
   r10: 10,
   r16: 16,
-}
+};
 
 export const Fonts = {
   f34: 34,
@@ -26,4 +26,4 @@ export const Fonts = {
   f16: 16,
   f14: 14,
   f12: 12,
-}
+};
