@@ -1,8 +1,10 @@
+import { useEffect, useRef } from "react";
 import {
   ImageBackground, 
   StyleSheet, 
   Text,
   View,
+  Animated
 } from "react-native";
 import mainBG from "./assets/main_bg.png";
 import { Colors, Fonts } from "./shared/tokens";
@@ -10,16 +12,71 @@ import { Button } from "./shared/Button/Button";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {
+  const animatedTransition = useRef(new Animated.Value(-60)).current
+  const animatedOpacity = useRef(new Animated.Value(0)).current
+  const animatedBgOpacity = useRef(new Animated.Value(0)).current
+  const animatedBgScale = useRef(new Animated.Value(0.9)).current
+  
+  const startAnimation = () => {
+    Animated.parallel([
+      Animated.timing(animatedTransition, {
+        toValue: 0,
+        duration: 1000,
+        delay: 500,
+        useNativeDriver: true
+      }),
+      Animated.timing(animatedOpacity, {
+        toValue: 1,
+        duration: 1000,
+        delay: 500,
+        useNativeDriver: true
+      }),
+      Animated.timing(animatedBgOpacity, {
+        toValue: 1,
+        duration: 1500,
+        useNativeDriver: true
+      }),
+      Animated.timing(animatedBgScale, {
+        toValue: 1,
+        duration: 1500,
+        useNativeDriver: true
+      }),
+    ]).start()
+  }
+
+  useEffect(() => {
+    startAnimation()
+  })
+  
   return (
     <View style={styles.container}>
-      <ImageBackground source={mainBG} resizeMode="contain" style={styles.bg}/>
+      <Animated.View style={{
+        ...styles.bgWrap,
+        opacity: animatedBgOpacity, 
+        transform: [{ 
+          scale: animatedBgScale 
+        }]
+      }}>
+        <ImageBackground source={mainBG} resizeMode="contain" style={styles.bg} />
+      </Animated.View>
       <LinearGradient
         colors={['transparent', `${Colors.black}`]}
         style={styles.gradient}
       />
       <View style={styles.content}>
-        <Text style={styles.title}>Один из самых вкусных кофе в городе!</Text>
-        <Text style={styles.subtitle}>Свежие зёрна, настоящая арабика и бережная обжарка</Text>
+        <Animated.Text style={{
+          ...styles.title,
+          opacity: animatedOpacity, 
+          transform: [
+            { translateY: animatedTransition },
+            
+          ]
+        }}>
+          Один из самых вкусных кофе в городе!
+        </Animated.Text>
+        <Text style={styles.subtitle}>
+          Свежие зёрна, настоящая арабика и бережная обжарка
+        </Text>
         <Button title="Начать" />
       </View>
     </View>
@@ -32,9 +89,13 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     backgroundColor: Colors.black,
   },
-  bg: {
+  bgWrap: {
     position: "absolute",
+    width: "100%",
+    height: "100%",
     top: -120,
+  },
+  bg: {
     width: "100%",
     height: "100%",
   },
