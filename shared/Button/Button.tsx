@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     borderRadius: Radius.r16,
   },
   buttonText: {
+    fontFamily: 'Sora-SemiBold',
     fontSize: Fonts.f16,
-    fontWeight: 600,
     color: Colors.white,
   },
 });

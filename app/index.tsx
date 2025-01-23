@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native';
-import mainBG from './assets/main_bg.png';
-import { Colors, Fonts } from './shared/tokens';
-import { Button } from './shared/Button/Button';
+import mainBG from '../assets/main_bg.png';
+import { Colors, Fonts } from '../shared/tokens';
+import { Button } from '../shared/Button/Button';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function App() {
+export default function Intro() {
   const animatedTransition = useRef(new Animated.Value(-60)).current;
   const animatedOpacity = useRef(new Animated.Value(0)).current;
   const animatedBgOpacity = useRef(new Animated.Value(0)).current;
@@ -106,20 +106,19 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 8,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Sora-SemiBold',
     fontSize: Fonts.f34,
     lineHeight: 34,
-    fontWeight: '600',
     letterSpacing: 1,
     textAlign: 'center',
     color: Colors.white,
   },
   subtitle: {
     marginBottom: 24,
-    fontFamily: 'Helvetica',
+    maxWidth: 315,
+    fontFamily: 'Sora-Regular',
     fontSize: Fonts.f14,
     lineHeight: 18,
-    fontWeight: '400',
     letterSpacing: 1,
     textAlign: 'center',
     color: Colors.textGray,

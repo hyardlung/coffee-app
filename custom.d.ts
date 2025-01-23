@@ -3,3 +3,8 @@ declare module '*.png' {
   const value: ImageSourcePropType;
   export default value;
 }
+
+declare module '*.ttf' {
+  const value: string;
+  export default value;
+}
