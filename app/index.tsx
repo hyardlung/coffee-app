@@ -1,15 +1,24 @@
 import { useEffect, useRef } from 'react';
 import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native';
-import mainBG from '../assets/main_bg.png';
-import { Colors, Fonts } from '../shared/tokens';
-import { Button } from '../shared/Button/Button';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
+
+import { Colors, Fonts } from '../shared/tokens';
+import Button from '../shared/Button/Button';
+import mainBG from '../assets/main_bg.png';
 
 export default function Intro() {
+  const router = useRouter();
   const animatedTransition = useRef(new Animated.Value(-60)).current;
   const animatedOpacity = useRef(new Animated.Value(0)).current;
   const animatedBgOpacity = useRef(new Animated.Value(0)).current;
   const animatedBgScale = useRef(new Animated.Value(0.9)).current;
+
+  const handlePressStart = () => {
+    router.push({
+      pathname: '/catalog',
+    });
+  };
 
   const startAnimation = () => {
     Animated.parallel([
@@ -74,7 +83,7 @@ export default function Intro() {
         <Text style={styles.subtitle}>
           Свежие зёрна, настоящая арабика и бережная обжарка
         </Text>
-        <Button title="Начать" />
+        <Button title="Начать" onPress={handlePressStart} />
       </View>
     </View>
   );
@@ -84,7 +93,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: Colors.black,
   },
   bgWrap: {
     position: 'absolute',
@@ -106,8 +114,9 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 8,
-    fontFamily: 'Sora-SemiBold',
+    fontFamily: Fonts.semiBold,
     fontSize: Fonts.f34,
+    fontWeight: 600,
     lineHeight: 34,
     letterSpacing: 1,
     textAlign: 'center',
@@ -116,11 +125,12 @@ const styles = StyleSheet.create({
   subtitle: {
     marginBottom: 24,
     maxWidth: 315,
-    fontFamily: 'Sora-Regular',
+    fontFamily: Fonts.regular,
     fontSize: Fonts.f14,
     lineHeight: 18,
     letterSpacing: 1,
     textAlign: 'center',
+    alignSelf: 'center',
     color: Colors.textGray,
   },
 });

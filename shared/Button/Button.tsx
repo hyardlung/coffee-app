@@ -9,7 +9,10 @@ import {
 } from 'react-native';
 import { Colors, Fonts, Radius } from '../tokens';
 
-export function Button({ title, ...props }: PressableProps & { title: string }) {
+export default function Button({
+  title,
+  ...props
+}: PressableProps & { title: string }) {
   const animatedValue = useRef(new Animated.Value(100)).current;
   const bgColor = animatedValue.interpolate({
     inputRange: [0, 100],
@@ -56,8 +59,9 @@ const styles = StyleSheet.create({
     borderRadius: Radius.r16,
   },
   buttonText: {
-    fontFamily: 'Sora-SemiBold',
+    fontFamily: Fonts.semiBold,
     fontSize: Fonts.f16,
+    fontWeight: 600,
     color: Colors.white,
   },
 });

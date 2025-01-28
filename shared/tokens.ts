@@ -2,15 +2,17 @@ export const Colors = {
   black: '#000',
   white: '#FFF',
   whiteBackground: '#F9F9F9',
+  inputBackground: '#313131',
+  ratingBackground: 'rgba(255, 255, 255, .16)',
   primary: '#C67C4E',
   primaryHover: '#A76237',
   textGreen: '#2F4B4E',
   textBlack: '#2F2D2C',
   textGray: '#9B9B9B',
-  inputBackground: '#313131',
 };
 
 export const Gaps = {
+  g12: 12,
   g16: 16,
   g50: 50,
 };
@@ -21,9 +23,12 @@ export const Radius = {
 };
 
 export const Fonts = {
-  f34: 34,
-  f18: 18,
-  f16: 16,
-  f14: 14,
+  f10: 10,
   f12: 12,
+  f14: 14,
+  f16: 16,
+  f18: 18,
+  f34: 34,
+  regular: 'Sora-Regular',
+  semiBold: 'Sora-SemiBold',
 };
