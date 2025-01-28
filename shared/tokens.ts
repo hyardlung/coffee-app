@@ -3,7 +3,7 @@ export const Colors = {
   white: '#FFF',
   whiteBackground: '#F9F9F9',
   inputBackground: '#313131',
-  ratingBackground: 'rgba(255, 255, 255, .16)',
+  ratingBackground: 'rgba(0, 0, 0, .16)',
   primary: '#C67C4E',
   primaryHover: '#A76237',
   textGreen: '#2F4B4E',
