@@ -23,7 +23,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <Stack
         screenOptions={{
-          headerShown: false,
+          headerShown: true,
           contentStyle: {
             backgroundColor: Colors.whiteBackground,
             paddingTop: insets.top,
@@ -33,14 +33,51 @@ export default function RootLayout() {
         <Stack.Screen
           name="index"
           options={{
+            headerShown: false,
             contentStyle: {
               backgroundColor: Colors.black,
             },
           }}
         />
         <Stack.Screen
+          name="catalog/index"
+          options={{
+            headerShown: false,
+            title: '',
+            contentStyle: {
+              paddingTop: insets.top,
+              backgroundColor: Colors.black,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="catalog/[coffee]"
+          options={{
+            title: 'Описание',
+          }}
+        />
+        <Stack.Screen
+          name="address"
+          options={{
+            title: 'Изменить адрес',
+          }}
+        />
+        <Stack.Screen
+          name="order"
+          options={{
+            title: 'Заказ',
+          }}
+        />
+        <Stack.Screen
+          name="success"
+          options={{
+            title: 'Заказ оформлен!',
+          }}
+        />
+        <Stack.Screen
           name="+not-found"
           options={{
+            headerShown: false,
             contentStyle: {
               backgroundColor: Colors.black,
             },

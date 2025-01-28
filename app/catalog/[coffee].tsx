@@ -1,21 +1,21 @@
-import { View, Text } from 'react-native';
-import { useRouter, useLocalSearchParams } from 'expo-router';
-import Button from '../../shared/Button/Button';
+import { View, Text, StyleSheet } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
+import { Colors } from '../../shared/tokens';
 
 export default function CoffeePage() {
-  const router = useRouter();
   const { coffee } = useLocalSearchParams();
 
-  const addToCart = () => {
-    router.push({
-      pathname: '/cart',
-    });
-  };
-
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{coffee}</Text>
-      <Button title="В корзину" onPress={addToCart} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 30,
+    backgroundColor: Colors.whiteBackground,
+  },
+});
